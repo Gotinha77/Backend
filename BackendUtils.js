@@ -78,7 +78,7 @@ class Database {
   }
 
   async connect() {
-    this.client = new MongoClient(this.mongoUri);
+    this.client = new MongoClient(this.MONGO_URI);
     await this.client.connect();
     this.db = this.client.db(this.dbName);
     this.collections.Users = this.db.collection("Users");
