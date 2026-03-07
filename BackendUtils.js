@@ -58,7 +58,7 @@ const BackendUtils = {
 
 class Database {
   constructor() {
-    this.mongoUri = process.env.mongoUri;
+    this.mongoUri = process.env.MONGO_URI;
     this.dbName = 'StumbleKnZ';
     this.client = null;
     this.db = null;
@@ -78,7 +78,7 @@ class Database {
   }
 
   async connect() {
-    this.client = new MongoClient(this.MONGO_URI);
+    this.client = new MongoClient(this.mongoUri);
     await this.client.connect();
     this.db = this.client.db(this.dbName);
     this.collections.Users = this.db.collection("Users");
